@@ -165,3 +165,11 @@ header i {
   color: azure;
   transform: scale(1.1);
 }
+.tarea-agregada {
+  color: white;
+  font-size: 30px;
+}
+
+.-sin-tareas {
+  color: white;
+}

@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { GuardarEnStorage } from "../helpers/GuardarEnStorage";
 
-export const Entradas = () => {
+export const Entradas = ({ setListadoState }) => {
   const [tareaState, setTareaState] = useState({
     tarea: "",
     fecha: "",
@@ -21,6 +21,12 @@ export const Entradas = () => {
     };
     //guardar estado
     setTareaState((prevState) => ({ ...prevState, ...tareaNueva }));
+
+    //actualizar estado
+    setListadoState((elementos) => {
+      return [...elementos, tareaNueva];
+    });
+
     //guardar el local storage
     GuardarEnStorage("tareasNuevas", tareaNueva);
   };
@@ -44,7 +50,9 @@ export const Entradas = () => {
           ></input>
         </div>
       </form>
-      <p>{tarea && fecha && "Nueva tarea: " + tarea}</p>
+      <p className="tarea-agregada">
+        {tarea && fecha && "Nueva tarea: " + tarea}
+      </p>
     </div>
   );
 };
