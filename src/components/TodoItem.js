@@ -34,38 +34,36 @@ export const TodoItem = ({ listadoState, setListadoState }) => {
       {listadoState.map != null ? (
         listadoState.map((tareaNueva) => {
           return (
-            <div key={tareaNueva.id} className="targeta-item">
-              <h3 className="title-ietm">{tareaNueva.tarea}</h3>
-              <p>{tareaNueva.fecha}</p>
-              <div className="botones-items">
-                <input
-                  type="button"
-                  value="Completa"
-                  className="item-completo"
-                ></input>
-                <input
-                  onClick={() => {
-                    setEditar(tareaNueva.id);
-                  }}
-                  type="button"
-                  value="Editar"
-                  className="item-editar"
-                ></input>
-                {/* Aparece formulario editar */}
-                {editar === tareaNueva.id && (
-                  <Editar
-                    tareaNueva={tareaNueva}
-                    conseguirTareas={conseguirTareas}
-                    setEditar={setEditar}
-                    setListadoState={setListadoState}
-                  />
-                )}
-                <input
-                  type="button"
-                  value="Eliminar"
-                  className="item-eliminar"
-                  onClick={() => borrarTarea(tareaNueva.id)}
-                ></input>
+            <div className="hijito">
+              <div key={tareaNueva.id} className="targeta-item">
+                <h3 className="title-ietm">{tareaNueva.tarea}</h3>
+                <p>{tareaNueva.fecha}</p>
+                <div className="botones-items">
+                  <input
+                    onClick={() => {
+                      setEditar(tareaNueva.id);
+                    }}
+                    type="button"
+                    value="Editar"
+                    className="item-editar"
+                    name="editar"
+                  ></input>
+                  {/* Aparece formulario editar */}
+                  {editar === tareaNueva.id && (
+                    <Editar
+                      tareaNueva={tareaNueva}
+                      conseguirTareas={conseguirTareas}
+                      setEditar={setEditar}
+                      setListadoState={setListadoState}
+                    />
+                  )}
+                  <input
+                    type="button"
+                    value="Eliminar"
+                    className="item-eliminar"
+                    onClick={() => borrarTarea(tareaNueva.id)}
+                  ></input>
+                </div>
               </div>
             </div>
           );
